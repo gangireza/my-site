@@ -1,1 +1,525 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#211735">
+<title>مامان عزیزم ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap');
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ min-height:100vh;
+ font-family:Vazirmatn,Tahoma,sans-serif;
+ color:white;
+ background:linear-gradient(160deg,#100e27,#29203e 55%,#49304e);
+ overflow-x:hidden;
+}
+
+body:before{
+ content:"";
+ position:fixed;
+ inset:0;
+ background:
+ radial-gradient(ellipse at 50% 100%,#a65c8c55,transparent 60%);
+ pointer-events:none;
+}
+
+#stars,#garden{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ overflow:hidden;
+}
+
+.star{
+ position:absolute;
+ width:3px;height:3px;
+ background:#fff;
+ border-radius:50%;
+ box-shadow:0 0 12px #fff;
+ animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+ from{opacity:.2;transform:scale(.6)}
+ to{opacity:1;transform:scale(1.6)}
+}
+
+.container{
+ max-width:520px;
+ margin:auto;
+ padding:48px 20px;
+ text-align:center;
+ position:relative;
+ z-index:2;
+}
+
+.top{
+ color:#f3c5db;
+ font-size:13px;
+ letter-spacing:2px;
+}
+
+h1{
+ font-size:clamp(30px,8vw,42px);
+ color:#ffe0eb;
+ text-shadow:0 0 25px #ffb4d9;
+ margin:12px 0;
+}
+
+.subtitle{
+ color:#e5c6dc;
+ line-height:2;
+}
+
+.envelope-area{
+ height:230px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ perspective:1000px;
+}
+
+.envelope{
+ width:290px;
+ height:180px;
+ position:relative;
+ cursor:pointer;
+ background:#c66d91;
+ border-radius:10px;
+ box-shadow:0 0 30px #ff9bc544,0 20px 50px #0005;
+}
+
+.envelope-back{
+ position:absolute;
+ inset:0;
+ background:#c66d91;
+ border-radius:10px;
+}
+
+.paper{
+ position:absolute;
+ left:8%;right:8%;
+ bottom:10px;
+ height:145px;
+ background:#fff6f2;
+ border-radius:6px;
+ color:#a34e72;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:19px;
+ transition:transform .9s;
+}
+
+.front{
+ position:absolute;
+ inset:0;
+ background:#e99bb8;
+ clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
+ border-radius:10px;
+ z-index:2;
+}
+
+.flap{
+ position:absolute;
+ inset:0;
+ background:#f4bad0;
+ clip-path:polygon(0 0,100% 0,50% 65%);
+ transform-origin:top;
+ transition:transform .9s;
+ z-index:4;
+}
+
+.seal{
+ position:absolute;
+ top:55%;left:50%;
+ transform:translate(-50%,-50%);
+ background:#a9436c;
+ width:48px;height:48px;
+ border-radius:50%;
+ display:grid;place-items:center;
+ font-size:24px;
+ z-index:5;
+ transition:.3s;
+}
+
+.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .paper{transform:translateY(-100px)}
+.envelope.open .seal{opacity:0}
+
+.hint{color:#f6cce0;font-size:14px}
+
+.letter{
+ display:none;
+ background:linear-gradient(145deg,#fffaf7,#ffeaf1);
+ color:#79465c;
+ padding:28px 23px;
+ border-radius:24px;
+ box-shadow:0 0 35px #f9a8d655;
+ animation:appear 1s;
+ text-align:right;
+ position:relative;
+ overflow:hidden;
+}
+
+.letter:before{
+ content:"✦";
+ position:absolute;
+ top:12px;right:15px;
+ color:#e6a4bd;
+ font-size:25px;
+ animation:shine 2s infinite;
+}
+
+.letter h2{
+ text-align:center;
+ color:#b94e79;
+ font-size:25px;
+}
+
+.letter p{line-height:2.5;font-size:16px}
+
+.signature{
+ text-align:left;
+ color:#ad4e75;
+ font-weight:bold;
+}
+
+.end{
+ display:none;
+ color:#ffe0ec;
+ font-size:22px;
+ margin:25px 0;
+ text-shadow:0 0 15px #ffadd4;
+}
+
+button{
+ font-family:inherit;
+ cursor:pointer;
+}
+
+.surprise{
+ display:none;
+ border:1px solid #f8c2db;
+ border-radius:30px;
+ background:linear-gradient(135deg,#f7b6d0,#d76c9a);
+ color:#54223b;
+ padding:14px 25px;
+ font-weight:bold;
+ font-size:15px;
+ margin-top:12px;
+}
+
+.hidden{
+ display:none;
+ margin-top:20px;
+ padding:23px;
+ border:1px solid #f6b7d5;
+ border-radius:20px;
+ background:#ffffff12;
+ color:#ffe1ef;
+ line-height:2.3;
+}
+
+.music{
+ margin-top:25px;
+ border:1px solid #f2bdd8;
+ color:#ffe0ec;
+ background:#ffffff10;
+ border-radius:30px;
+ padding:10px 20px;
+}
+
+.petal,.sparkle{
+ position:fixed;
+ top:-40px;
+ pointer-events:none;
+ z-index:10;
+ animation:fall linear forwards;
+}
+
+.sparkle{
+ animation-name:sparkleFall;
+}
+
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(650deg);opacity:0}
+}
+
+@keyframes sparkleFall{
+ to{transform:translateY(110vh) rotate(180deg) scale(.3);opacity:0}
+}
+
+@keyframes appear{
+ from{opacity:0;transform:translateY(25px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes shine{
+ 50%{opacity:.3;transform:scale(1.4)}
+}
+
+.flower-bed{
+ position:fixed;
+ bottom:0;
+ left:0;right:0;
+ height:110px;
+ display:flex;
+ justify-content:space-around;
+ align-items:flex-end;
+ pointer-events:none;
+ opacity:.75;
+}
+
+.bloom{
+ font-size:27px;
+ transform:scale(0);
+ animation:bloom .9s forwards;
+ filter:drop-shadow(0 0 12px #ffb6d8);
+}
+
+@keyframes bloom{
+ to{transform:scale(1)}
+}
+
+@media(max-width:360px){
+ .envelope{width:250px}
+ .letter{padding:22px 17px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div id="garden"></div>
+<div class="flower-bed" id="flowerBed"></div>
+
+<div class="container">
+
+ <div class="top">یک هدیه از اعماق قلبم ✨</div>
+
+ <h1>مامان عزیزم 🌷</h1>
+
+ <p class="subtitle">
+ برای مهربان‌ترین فرشته زندگی‌ام
+ </p>
+
+ <div class="envelope-area" id="envelopeArea">
+  <div class="envelope" id="envelope" onclick="openLetter()">
+   <div class="envelope-back"></div>
+   <div class="paper">با تمام عشق، برای تو ❤️</div>
+   <div class="front"></div>
+   <div class="flap"></div>
+   <div class="seal">♥</div>
+  </div>
+ </div>
+
+ <div class="hint" id="hint">
+ 💌 برای باز کردن نامه روی پاکت بزن
+ </div>
+
+ <section class="letter" id="letter">
+  <h2>مامان عزیزم ❤️</h2>
+
+  <p>
+  شاید هیچ کلمه‌ای نتونه تمام محبت‌ها و
+  زحمت‌هات رو جبران کنه؛ اما می‌خوام بدونی
+  که بودنت قشنگ‌ترین نعمت زندگی منه.
+  </p>
+
+  <p>
+  ممنونم که همیشه با عشق کنارمی.
+  دوستت دارم، بیشتر از تمام کلمه‌ها... ❤️
+  </p>
+
+  <p class="signature">
+  با تمام عشق، فرزندت 🌹
+  </p>
+ </section>
+
+ <div class="end" id="end">
+  روزت مبارک، فرشته مهربون من! 💗
+ </div>
+
+ <button class="surprise" id="surpriseButton"
+ onclick="showSurprise()">
+ یک سورپرایز دیگه دارم 🎁
+ </button>
+
+ <div class="hidden" id="hidden">
+  مامان جان...
+  <br>
+  اگر هزار بار دیگه هم به دنیا بیام،
+  باز هم آرزو می‌کنم فرزند تو باشم.
+  <br>
+  تو قشنگ‌ترین اتفاق زندگی منی.
+  <br>
+  دوستت دارم تا بی‌نهایت! 💖🌷
+ </div>
+
+ <button class="music" id="musicButton" onclick="toggleMusic()">
+ ♫ روشن کردن موسیقی
+ </button>
+
+</div>
+
+<script>
+
+// ستاره‌های آسمان
+const stars=document.getElementById("stars");
+
+for(let i=0;i<90;i++){
+ const s=document.createElement("div");
+ s.className="star";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDelay=Math.random()*3+"s";
+ stars.appendChild(s);
+}
+
+// شکوفه‌های پایین صفحه
+function bloomGarden(){
+ const bed=document.getElementById("flowerBed");
+ const flowers=["🌷","🌸","🌺","🌼","🌹"];
+
+ flowers.forEach((f,i)=>{
+  const item=document.createElement("span");
+  item.className="bloom";
+  item.textContent=f;
+  item.style.animationDelay=(i*.25)+"s";
+  bed.appendChild(item);
+ });
+}
+
+let opened=false;
+
+function openLetter(){
+ if(opened)return;
+ opened=true;
+
+ document.getElementById("envelope").classList.add("open");
+ document.getElementById("hint").style.display="none";
+
+ setTimeout(()=>{
+  document.getElementById("envelopeArea").style.display="none";
+  document.getElementById("letter").style.display="block";
+  document.getElementById("end").style.display="block";
+  document.getElementById("surpriseButton").style.display="inline-block";
+
+  bloomGarden();
+
+  for(let i=0;i<45;i++){
+   setTimeout(createPetal,i*100);
+  }
+
+  for(let i=0;i<25;i++){
+   setTimeout(createSparkle,i*130);
+  }
+ },850);
+}
+
+function createPetal(){
+ const p=document.createElement("div");
+ p.className="petal";
+ p.textContent=["🌸","🌷","💗","🌺","🌹"][
+ Math.floor(Math.random()*5)];
+ p.style.left=Math.random()*100+"vw";
+ p.style.fontSize=(16+Math.random()*17)+"px";
+ p.style.animationDuration=(4+Math.random()*5)+"s";
+ document.body.appendChild(p);
+ setTimeout(()=>p.remove(),9500);
+}
+
+function createSparkle(){
+ const s=document.createElement("div");
+ s.className="sparkle";
+ s.textContent="✨";
+ s.style.left=Math.random()*100+"vw";
+ s.style.fontSize=(12+Math.random()*15)+"px";
+ s.style.animationDuration=(3+Math.random()*4)+"s";
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),8000);
+}
+
+function showSurprise(){
+ document.getElementById("hidden").style.display="block";
+ document.getElementById("surpriseButton").style.display="none";
+
+ for(let i=0;i<55;i++){
+  setTimeout(createPetal,i*70);
+ }
+ for(let i=0;i<35;i++){
+  setTimeout(createSparkle,i*90);
+ }
+}
+
+// موسیقی ساده ساخته‌شده با صدای مرورگر
+let audioContext=null;
+let musicTimer=null;
+let musicOn=false;
+let noteIndex=0;
+
+const notes=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
+
+function playNote(){
+ if(!audioContext||!musicOn)return;
+
+ const oscillator=audioContext.createOscillator();
+ const gain=audioContext.createGain();
+
+ oscillator.type="sine";
+ oscillator.frequency.value=notes[noteIndex%notes.length];
+
+ gain.gain.setValueAtTime(.0001,audioContext.currentTime);
+ gain.gain.exponentialRampToValueAtTime(.04,audioContext.currentTime+.08);
+ gain.gain.exponentialRampToValueAtTime(.0001,audioContext.currentTime+1.2);
+
+ oscillator.connect(gain);
+ gain.connect(audioContext.destination);
+
+ oscillator.start();
+ oscillator.stop(audioContext.currentTime+1.3);
+
+ noteIndex++;
+}
+
+async function toggleMusic(){
+ const button=document.getElementById("musicButton");
+
+ if(!audioContext){
+  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextClass){
+   button.textContent="موسیقی پشتیبانی نمی‌شود";
+   return;
+  }
+  audioContext=new AudioContextClass();
+ }
+
+ if(audioContext.state==="suspended"){
+  await audioContext.resume();
+ }
+
+ musicOn=!musicOn;
+
+ if(musicOn){
+  playNote();
+  musicTimer=setInterval(playNote,700);
+  button.textContent="♫ خاموش کردن موسیقی";
+ }else{
+  clearInterval(musicTimer);
+  button.textContent="♫ روشن کردن موسیقی";
+ }
+}
+
+</script>
+
+</body>
+</html>
